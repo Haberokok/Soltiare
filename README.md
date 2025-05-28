@@ -24,10 +24,11 @@ python --version
 python3 --version
 
 Jeśli Python nie jest zainstalowany lub masz starszą wersję, możesz go pobrać z oficjalnej strony: python.org.
-1.2. Pobieranie plików projektu
+```
+### 1.2. Pobieranie plików projektu
 
 Upewnij się, że wszystkie pliki źródłowe gry (np. main.py oraz wszelkie inne moduły, jeśli projekt jest podzielony na wiele plików) znajdują się w jednym, wspólnym katalogu na Twoim komputerze. Jeśli otrzymałeś projekt w formie skompresowanego archiwum (.zip, .rar itp.), rozpakuj je do osobnego folderu.
-1.3. Uruchamianie gry
+### 1.3. Uruchamianie gry
 
     Otwórz terminal/wiersz poleceń:
         Windows: Naciśnij Win + R, wpisz cmd i naciśnij Enter.
@@ -53,13 +54,13 @@ Bash
     (Jeśli Twój główny plik ma inną nazwę niż main.py, zastąp ją odpowiednią nazwą).
 
 Po uruchomieniu gry, w konsoli pojawi się menu główne, a program poprosi Cię o podanie swojego nicku.
-📜 2. Instrukcje rozgrywki
+## 📜 2. Instrukcje rozgrywki
 
 Pasjans to gra dla jednego gracza, której celem jest ułożenie wszystkich kart w porządku rosnącym na stosach fundamentowych.
-2.1. Cel gry
+### 2.1. Cel gry
 
 Twoim głównym celem jest przeniesienie wszystkich 52 kart na cztery stosy fundamentowe (oznaczone jako F-♥, F-♦, F-♣, F-♠). Karty na fundamentach muszą być ułożone od Asa do Króla (A, 2, 3, ..., Q, K), z zachowaniem tego samego koloru (np. wszystkie karty kierów na stosie F-♥).
-2.2. Układ kart na stole
+### 2.2. Układ kart na stole
 
 Plansza Pasjansa składa się z kilku kluczowych obszarów:
 
@@ -68,7 +69,7 @@ Plansza Pasjansa składa się z kilku kluczowych obszarów:
     Stacks (Stosy robocze 1-7): To siedem pionowych kolumn kart, które stanowią główny obszar gry. Liczba kart w każdej kolumnie rośnie od lewej do prawej (od 1 do 7 kart). W każdej kolumnie tylko ostatnia karta jest odkryta; pozostałe są zakryte.
     Foundation (Stosy fundamentowe F-♥, F-♦, F-♣, F-♠): Cztery puste miejsca w prawym górnym rogu planszy. To tutaj będziesz układać karty od Asa do Króla, posortowane według koloru.
 
-2.3. Zasady ruchów
+### 2.3. Zasady ruchów
 
 Zrozumienie zasad ruchów jest kluczowe do wygranej:
 
@@ -86,7 +87,7 @@ Zrozumienie zasad ruchów jest kluczowe do wygranej:
         Wybór akcji "Dobierz kartę" przenosi jedną lub więcej kart ze stosu rezerwy do stosu odkrytego (Waste). Liczba dobieranych kart zależy od wybranego poziomu trudności.
         Jeśli stos rezerwy jest pusty, a stos odkryty zawiera karty, stos odkryty jest "recyklowany" – jego karty wracają do stosu rezerwy, aby można było je ponownie dobierać. Na trudnym poziomie trudności liczba recyklingów jest ograniczona.
 
-2.4. Sterowanie w grze (interakcja w konsoli)
+### 2.4. Sterowanie w grze (interakcja w konsoli)
 
 Po każdym ruchu lub wyświetleniu planszy, gra wyświetli dostępne opcje i poprosi o wybranie akcji poprzez wpisanie odpowiedniej cyfry i naciśnięcie klawisza Enter:
 
@@ -103,7 +104,7 @@ Po każdym ruchu lub wyświetleniu planszy, gra wyświetli dostępne opcje i pop
     0 - Zakończ grę: Całkowicie zamyka program.
 
 Anulowanie operacji: W trakcie podawania numerów stosów lub kart, możesz wpisać 0 lub słowo anuluj (bez cudzysłowów), aby przerwać bieżącą operację i wrócić do głównego wyboru akcji.
-2.5. Menu Główne
+### 2.5. Menu Główne
 
 Przy starcie gry i po jej zakończeniu, zostaniesz przeniesiony do menu głównego, które oferuje następujące opcje:
 
@@ -112,7 +113,7 @@ Przy starcie gry i po jej zakończeniu, zostaniesz przeniesiony do menu główne
     3 - Hall of Fame (Najlepsi gracze): Prezentuje listę najlepszych wyników, posortowaną według liczby ruchów i czasu gry.
     0 - Wyjdź z gry: Zamyka aplikację Pasjansa.
 
-2.6. Poziomy Trudności
+### 2.6. Poziomy Trudności
 
 Gra oferuje trzy poziomy trudności, które wpływają na mechanikę dobierania kart ze stosu rezerwy:
 
@@ -126,10 +127,10 @@ Gra oferuje trzy poziomy trudności, które wpływają na mechanikę dobierania 
         Dobierasz 3 karty ze stosu rezerwy (Stock) na stos odkryty (Waste) za każdym razem. Tylko wierzchnia z tych trzech kart jest od razu grywalna.
         Możesz przejść przez talię tylko 1 raz (po pierwszym recyklingu stosu odkrytego do Stocka, nie możesz już ponownie dobierać kart z pustego Stocka).
 
-💻 3. Opis kodu (struktura i funkcjonalność)
+## 💻 3. Opis kodu (struktura i funkcjonalność)
 
 Projekt Pasjansa został zaimplementowany w języku Python, wykorzystując podejście proceduralne. Oznacza to, że logika gry jest zorganizowana w funkcje, które operują na globalnych strukturach danych.
-3.1. Główne zmienne globalne
+### 3.1. Główne zmienne globalne
 
 Kilka kluczowych zmiennych jest zarządzanych globalnie, aby śledzić stan gry i ustawienia użytkownika:
 
@@ -143,7 +144,7 @@ Kilka kluczowych zmiennych jest zarządzanych globalnie, aby śledzić stan gry 
     current_passes_count: $int$ - Aktualny licznik recyklingów talii w bieżącej grze.
     hall_of_fame: $list$ - Lista słowników, gdzie każdy słownik reprezentuje wynik gracza i zawiera jego nickname, moves (liczbę ruchów) oraz time_taken (czas gry).
 
-3.2. Funkcje interfejsu użytkownika i menu
+### 3.2. Funkcje interfejsu użytkownika i menu
 
 Te funkcje odpowiadają za interakcję z użytkownikiem poza samą planszą gry.
 
@@ -169,7 +170,7 @@ Te funkcje odpowiadają za interakcję z użytkownikiem poza samą planszą gry.
         Umożliwia użytkownikowi wybranie akcji: rozpoczęcie nowej gry, wyświetlenie zasad, sprawdzenie Hall of Fame lub wyjście z aplikacji.
         Zwraca string "start" lub "exit", kierując dalszym działaniem programu głównego.
 
-3.3. Funkcje zarządzające stanem gry i inicjalizacją
+### 3.3. Funkcje zarządzające stanem gry i inicjalizacją
 
 Te funkcje są odpowiedzialne za przygotowanie planszy do gry i śledzenie jej zmian.
 
@@ -199,7 +200,7 @@ Te funkcje są odpowiedzialne za przygotowanie planszy do gry i śledzenie jej z
         Aktualizuje wszystkie globalne zmienne (stosy, liczniki, czas) do poprzedniego stanu, efektywnie cofając ruch.
         Wyświetla informację, jeśli nie ma żadnych wcześniejszych ruchów do cofnięcia.
 
-3.4. Funkcje graficzne (ASCII Art)
+### 3.4. Funkcje graficzne (ASCII Art)
 
 Te funkcje odpowiadają za wizualne przedstawienie kart i planszy w konsoli.
 
@@ -221,7 +222,7 @@ Te funkcje odpowiadają za wizualne przedstawienie kart i planszy w konsoli.
         Oblicza i wyświetla ważne informacje o stanie gry: aktualny czas rozgrywki, liczbę wykonanych ruchów, wybrany poziom trudności oraz informację o liczbie dostępnych recyklingów talii.
         Dba o prawidłowe wyrównanie i formatowanie, aby plansza była czytelna.
 
-3.5. Funkcje logiki kart
+### 3.5. Funkcje logiki kart
 
 Proste funkcje pomocnicze do manipulacji danymi kart.
 
