@@ -1,0 +1,7 @@
+# This file is intentionally left empty.
+# The project uses only standard Python libraries (random, time, copy).
+# Therefore, no external dependencies need to be installed.
+#
+# If external libraries were used, they would be listed here, for example:
+# colorama==0.4.6
+# pandas==2.2.0
